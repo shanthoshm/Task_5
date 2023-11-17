@@ -1,0 +1,51 @@
+
+<br>
+<div class="container">
+    <div class="col-md-6 offset-md-3 border p-3">
+        <h3 class="text-center">Search Account</h3>
+        <form (ngSubmit)="getAccount(accountNumber)">
+            <div class="form-group">
+                <label>Account Number</label>
+                <input type="number" class="form-control" id="accountNumber" placeholder="Enter the account number"
+                [(ngModel)]="accountNumber" name="accountNumber">
+            </div>
+            <br>
+            <div class="text-center">
+                <button class="btn btn-success" type="submit">SEARCH</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<br>
+<h3 class="text-center">Account Details</h3>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Account Number</th>
+            <th>Full Name</th>
+            <th>Email</th>
+            <th>Street</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Country</th>
+            <th>Account Type</th>
+            <th>Account Status</th>
+            <th>Account Balance</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{{ accountNumber }}</td>
+            <td>{{ account.fullName }}</td>
+            <td>{{ account.email }}</td>
+            <td>{{ account.street }}</td>
+            <td>{{ account.city }}</td>
+            <td>{{ account.state }}</td>
+            <td>{{ account.country }}</td>
+            <td>{{ account.accountType }}</td>
+            <td>{{ account.accountStatus }}</td>
+            <td>{{ account.balance | currency: 'USD'}}</td>
+        </tr>
+    </tbody>
+</table>

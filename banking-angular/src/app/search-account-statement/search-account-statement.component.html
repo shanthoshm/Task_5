@@ -1,0 +1,55 @@
+<br>
+<div class="container">
+    <div class="col-md-6 offset-md-3 border p-3">
+        <h3 class="text-center">Search Statement</h3>
+        <form (ngSubmit)="searchAccountStatement(accountNumber)">
+            <div class="form-group">
+                <label>Account Number</label>
+                <input type="number" class="form-control" id="accountNumber" placeholder="Enter the account number"
+                [(ngModel)]="accountNumber" name="accountNumber">
+            </div>
+            <br>
+            <div class="text-center">
+                <button class="btn btn-success" type="submit">GET STATEMENT</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<div *ngIf="accountStatementResponse">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Account Number</th>
+        <th>Customer Name</th>
+        <th>Current Balance</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{ accountStatementResponse.accountNumber }}</td>
+        <td>{{ accountStatementResponse.fullName }}</td>
+        <td>{{ accountStatementResponse.balance | currency: 'USD' }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Transaction ID</th>
+        <th>Transaction Type</th>
+        <th>Transaction Amount</th>
+        <th>Balance</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let transaction of accountStatementResponse.transactionListings">
+        <td>{{ transaction.transactionId }}</td>
+        <td>{{ transaction.transactionType }}</td>
+        <td>{{ transaction.transactionAmount | currency: 'USD' }}</td>
+        <td>{{ transaction.balance }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,23 @@
+
+<br>
+<div class="container">
+    <div class="col-md-6 offset-md-3 border p-3">
+        <h3 class="text-center">Withdraw</h3>
+        <form (ngSubmit)="withdraw(withdrawRequest)">
+            <div class="form-group">
+                <label>Account Number</label>
+                <input type="text" class="form-control" id="accountNumber" placeholder="Enter the account number"
+                [(ngModel)]="withdrawRequest.accountNumber" name="accountNumber">
+            </div>
+            <div class="form-group">
+                <label>Amount (USD)</label>
+                <input type="number" class="form-control" id="amount" placeholder="Enter the withdraw amount"
+                [(ngModel)] = "withdrawRequest.withdrawalAmount" name="withdrawalAmount">
+            </div>
+            <br>
+            <div class="text-center">
+                <button class="btn btn-success" type="submit">WITHDRAW</button>
+            </div>
+        </form>
+    </div>
+</div>
